@@ -1,6 +1,10 @@
-<strong><%= comment.commenter %></strong>
-<p><%= comment.body %></p>
-
-<p>
-    <%= link_to 'Destroy Comment', [comment.article, comment], method: :delete, data: { confirm: "Are you sure?" } %>
-</p>
+  <div class="card" >
+    <div class="card-body">
+      <h5 class="card-title"><%= comment.commenter %> <small class="text-muted">says: </small></h5>
+      <p class="card-text"><%= comment.body %></p>
+      <div class="d-flex justify-content-end">
+        <%= link_to 'Destroy Comment', [comment.article, comment], method: :delete, data: { confirm: "Are you sure?" } %>
+      </div>
+    </div>
+  </div>
+  

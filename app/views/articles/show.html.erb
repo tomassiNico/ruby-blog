@@ -1,15 +1,33 @@
-<h1>Article <%= @article.id %></h1>
+<div class="container align-items-center">
+    <section class="jumbotron">
+        <div class="row mt-5">
+            <div class="col-12">
+                <h1 class="display-5"> <%= @article.title %></h1>
+            </div>
+            <div class="col align-items-center">
+                <span><%= @article.created_at.strftime('%F') %></span>
+            </div>
+            <div class="col d-flex justify-content-end align-items-center">
+                <%= link_to "Edit", edit_article_path(@article), class: "h5 mb-0 mx-2" %> |
+                <%= link_to "Destroy", article_path(@article), method: :delete, data: { confirm: "Are you sure?" }, class: "h5 mb-0 mx-2" %>
+            </div>
+        </div>
 
-<h1> <%= @article.title %> </h1>
-<p> <%= @article.body %> </p>
+        <hr class="my-4">
+        
+        <div class="jumbotron">
+            <span> <%= @article.body %> </span>
+        </div>
+    </section>
 
-<ul>
-    <li><%= link_to "Home", root_path %> </li>
-    <li><%= link_to "Edit", edit_article_path(@article) %> </li>
-    <li><%= link_to "Destroy", article_path(@article), method: :delete, data: { confirm: "Are you sure?" } %> </li>
-</ul>
 
-<h2>Add comment:</h2>
-<%= render "comments/form" %>
+    <h5>Add comment:</h5>
+    <%= render "comments/form" %>
 
-<%= render @article.comments %>
+    <h5> <%= @article.comments.count %> Comments:</h5>
+    <% @article.comments.each do |comment| %>
+      <% unless comment.id.nil? %>
+        <%= render comment %>
+      <% end %>
+    <% end %>
+</div>

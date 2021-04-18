@@ -1,0 +1,20 @@
+<div class="container border my-md-5 py-1">
+    <div class="row">
+        <div class="col-8">
+            <%= link_to article.title, article, class: "btn btn-link" %> <br>
+        </div>
+        <div class="col-4">
+            <small class="text-muted"><%= time_ago_in_words(article.created_at)  %></small>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8">
+            <span><%= article.body %></span>  
+        </div>
+    </div>
+    <div class="row justify-content-end">
+        <div class="col-6">
+            <small class="text-muted"><%= article.comments.count %> comments</small>
+        </div>
+    </div>
+</div>
